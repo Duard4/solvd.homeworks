@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Portfolio</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <!-- Header Block -->
+    <header class="header">
+      <button class="header__theme-switcher">
+        <svg class="header__theme-switcher-icon">
+          <use href="assets/icons/sprite.svg#ThemeSwitcher"></use>
+        </svg>
+      </button>
+    </header>
+
+    <main class="main">
+      <!-- About Me Block -->
+      <section class="about-me">
+        <div class="about-me__person">
+          <img
+            src="assets/images/profile-picture.png"
+            alt="Profile Photo"
+            class="about-me__photo"
+          />
+          <div class="about-me__info">
+            <h1 class="about-me__name">Victor Alvarado</h1>
+            <h2 class="about-me__position">Software Engineer</h2>
+
+            <address class="about-me__links">
+              <ul class="about-me__links-list">
+                <li class="about-me__links-item">
+                  <a href="https://github.com" class="about-me__link">
+                    <svg class="about-me__links-item-icon">
+                      <use href="assets/icons/sprite.svg#Github"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="about-me__links-item">
+                  <a href="https://twitter.com" class="about-me__link">
+                    <svg class="about-me__links-item-icon">
+                      <use href="assets/icons/sprite.svg#Twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="about-me__links-item">
+                  <a href="https://linkedin.com" class="about-me__link">
+                    <svg class="about-me__links-item-icon">
+                      <use href="assets/icons/sprite.svg#LinkedIn"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="about-me__links-item">
+                  <a href="https://youtube.com" class="about-me__link">
+                    <svg class="about-me__links-item-icon">
+                      <use href="assets/icons/sprite.svg#Youtube"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </address>
+          </div>
+        </div>
+
+        <ul class="about-me__features">
+          <li class="about-me__feature">7<br />Years of work experience</li>
+          <li class="about-me__feature">50+<br />Completed projects</li>
+          <li class="about-me__feature">20+<br />Satisfied customers</li>
+        </ul>
+
+        <div class="about-me__buttons">
+          <a
+            href="assets/files/Eduard_Parkhomenko_Resume.pdf"
+            download="Eduard_Parkhomenko_Resume.pdf"
+            class="about-me__button"
+          >
+            Download CV
+            <svg class="about-me__button-icon">
+              <use href="assets/icons/sprite.svg#Download"></use>
+            </svg>
+          </a>
+          <a href="tel:+380960573031" class="about-me__button">Contact me</a>
+        </div>
+      </section>
+
+      <!-- Portfolio Section Block -->
+      <section class="portfolio">
+        <div class="portfolio__content-switcher">
+          <button
+            class="portfolio__button portfolio__button--active"
+            aria-pressed="true"
+            aria-controls="portfolio-projects"
+          >
+            Portfolio
+          </button>
+          <button class="portfolio__button" aria-pressed="false" aria-controls="portfolio-skills">
+            Skills
+          </button>
+        </div>
+
+        <ul class="portfolio__projects">
+          <li class="portfolio__project">
+            <img src="assets/images/project-1.png" alt="Project 1" class="portfolio__image" />
+            <div class="portfolio__details">
+              <h3 class="portfolio__title">Project 1</h3>
+              <p class="portfolio__description">Description of Project 1.</p>
+              <a href="#" class="portfolio__link">
+                <svg>
+                  <use href="assets/icons/sprite.svg#Link"></use>
+                </svg>
+              </a>
+            </div>
+          </li>
+          <li class="portfolio__project">
+            <img src="assets/images/project-2.png" alt="Project 2" class="portfolio__image" />
+            <div class="portfolio__details">
+              <h3 class="portfolio__title">Project 2</h3>
+              <p class="portfolio__description">Description of Project 2.</p>
+              <a href="#" class="portfolio__link">
+                <svg>
+                  <use href="assets/icons/sprite.svg#Link"></use>
+                </svg>
+              </a>
+            </div>
+          </li>
+          <li class="portfolio__project">
+            <img src="assets/images/project-3.png" alt="Project 3" class="portfolio__image" />
+            <div class="portfolio__details">
+              <h3 class="portfolio__title">Project 3</h3>
+              <p class="portfolio__description">Description of Project 3.</p>
+              <a href="#" class="portfolio__link">
+                <svg>
+                  <use href="assets/icons/sprite.svg#Link"></use>
+                </svg>
+              </a>
+            </div>
+          </li>
+          <li class="portfolio__project">
+            <img src="assets/images/project-4.png" alt="Project 4" class="portfolio__image" />
+            <div class="portfolio__details">
+              <h3 class="portfolio__title">Project 4</h3>
+              <p class="portfolio__description">Description of Project 4.</p>
+              <a href="#" class="portfolio__link">
+                <svg>
+                  <use href="assets/icons/sprite.svg#Link"></use>
+                </svg>
+              </a>
+            </div>
+          </li>
+          <li class="portfolio__project">
+            <img src="assets/images/project-5.png" alt="Project 1" class="portfolio__image" />
+            <div class="portfolio__details">
+              <h3 class="portfolio__title">Project 5</h3>
+              <p class="portfolio__description">Description of Project 5.</p>
+              <a href="#" class="portfolio__link">
+                <svg>
+                  <use href="assets/icons/sprite.svg#Link"></use>
+                </svg>
+              </a>
+            </div>
+          </li>
+          <li class="portfolio__project">
+            <img src="assets/images/project-6.png" alt="Project 6" class="portfolio__image" />
+            <div class="portfolio__details">
+              <h3 class="portfolio__title">Project 6</h3>
+              <p class="portfolio__description">Description of Project 6.</p>
+              <a href="#" class="portfolio__link">
+                <svg>
+                  <use href="assets/icons/sprite.svg#Link"></use>
+                </svg>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p class="footer__text">© Victor Alvarado. 2022 All rights reserved</p>
+    </footer>
+    <script src="switcher.js"></script>
+  </body>
+</html>
