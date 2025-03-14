@@ -1,0 +1,63 @@
+/* Animation button push */
+@keyframes buttonPush {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.about-me__button:active,
+.portfolio__button:active {
+  animation: buttonPush 0.3s ease-in-out;
+}
+
+/* Animation fading */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.header {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.2s forwards;
+}
+
+.about-me {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.4s forwards;
+}
+
+.portfolio {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.6s forwards;
+}
+
+.footer {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.8s forwards;
+}
+
+/* Animation for photo */
+@keyframes fadeInRotate {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.about-me__photo {
+  animation: fadeInRotate 0.8s ease-out forwards;
+}

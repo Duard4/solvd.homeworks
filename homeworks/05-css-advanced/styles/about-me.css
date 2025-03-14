@@ -1,0 +1,159 @@
+/* About me */
+.about-me__person {
+  display: grid;
+  gap: 40px;
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  @media (min-width: 600px) {
+    text-align: start;
+    gap: 24px;
+    display: flex;
+    margin-top: 65px;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    gap: 40px;
+  }
+}
+
+.about-me__name {
+  color: var(--title-color);
+  font-size: 32px;
+
+  @media (min-width: 600px) {
+    font-size: 38px;
+  }
+  @media (min-width: 1024px) {
+    font-size: 46px;
+    margin-bottom: 3px;
+  }
+}
+
+.about-me__links-list {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  @media (min-width: 600px) {
+    margin-top: 12px;
+    justify-content: start;
+  }
+}
+
+.about-me__links-item {
+  display: flex;
+  width: 24px;
+  height: 24px;
+
+  @media (min-width: 600px) {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.about-me__links-item-icon {
+  height: 100%;
+  fill: var(--text-color);
+  transition: fill 0.3s ease-in-out;
+}
+
+.about-me__links-item:hover .about-me__links-item-icon {
+  fill: var(--title-color);
+}
+
+.about-me__features {
+  max-width: 375px;
+  padding: 20px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  margin-block: 30px;
+  gap: 27px;
+  @media (min-width: 600px) {
+    padding-inline: auto;
+    max-width: 90%;
+    margin-block: 48px;
+  }
+  @media (min-width: 1024px) {
+    padding-inline: 31px;
+    gap: 90px;
+    max-width: 634px;
+  }
+}
+
+.about-me__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  @media (min-width: 600px) {
+    margin-top: 20px;
+  }
+  @media (min-width: 1024px) {
+    margin-top: 40px;
+    gap: 38px;
+  }
+}
+
+.about-me__button {
+  display: inline-flex;
+  width: 158px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-block: 13px;
+  background-color: var(--bg-content-color);
+  border-radius: 10px;
+  transition: background-color 0.3s ease-in-out;
+  font-size: 12px;
+
+  &:hover {
+    background-color: var(--primary-color);
+  }
+  @media (min-width: 600px) {
+    font-size: inherit;
+    padding-block: 24px;
+    width: 45%;
+  }
+  @media (min-width: 1024px) {
+    width: 290px;
+  }
+}
+
+body.dark .about-me__button {
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--primary-content-color);
+
+    & .about-me__button-icon {
+      fill: var(--primary-content-color);
+    }
+  }
+}
+
+.about-me__button-icon {
+  fill: var(--text-color);
+  width: 16px;
+  height: 14px;
+  transition: fill 0.3s ease-in-out;
+  @media (min-width: 600px) {
+    width: 28px;
+    height: 24px;
+  }
+}
+
+.about-me__photo {
+  width: 124px;
+  height: 124px;
+  margin-inline: auto;
+  @media (min-width: 600px) {
+    margin-inline: unset;
+    width: 215px;
+    height: 215px;
+  }
+}
