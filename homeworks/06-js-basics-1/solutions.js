@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 // http://www.codewars.com/kata/opposite-number
-function opposite(number) {
+export function opposite(number) {
   return -number;
 }
 
 // http://www.codewars.com/kata/basic-mathematical-operations
-function basicOp(operation, value1, value2) {
+export function basicOp(operation, value1, value2) {
   const operations = {
     '+': (a, b) => a + b,
     '-': (a, b) => a - b,
@@ -16,69 +15,69 @@ function basicOp(operation, value1, value2) {
 }
 
 // http://www.codewars.com/kata/printing-array-elements-with-comma-delimiters
-function printArray(array) {
+export function printArray(array) {
   return array.join(',');
 }
 
 // http://www.codewars.com/kata/transportation-on-vacation
-function rentalCarCost(d) {
-  let cost = d < 3 ? 0 : d < 7 ? -20 : -50;
-  return cost + d * 40;
+export function rentalCarCost(days) {
+  let cost = days < 3 ? 0 : days < 7 ? -20 : -50;
+  return cost + days * 40;
 }
 
-// http://www.codewars.com/kata/calculating-with-functions
-function zero(fn) {
-  return fn ? fn(0) : 0;
+// http://www.codewars.com/kata/calculating-with-export functions
+export function zero(func) {
+  return func ? func(0) : 0;
 }
-function one(fn) {
-  return fn ? fn(1) : 1;
+export function one(func) {
+  return func ? func(1) : 1;
 }
-function two(fn) {
-  return fn ? fn(2) : 2;
+export function two(func) {
+  return func ? func(2) : 2;
 }
-function three(fn) {
-  return fn ? fn(3) : 3;
+export function three(func) {
+  return func ? func(3) : 3;
 }
-function four(fn) {
-  return fn ? fn(4) : 4;
+export function four(func) {
+  return func ? func(4) : 4;
 }
-function five(fn) {
-  return fn ? fn(5) : 5;
+export function five(func) {
+  return func ? func(5) : 5;
 }
-function six(fn) {
-  return fn ? fn(6) : 6;
+export function six(func) {
+  return func ? func(6) : 6;
 }
-function seven(fn) {
-  return fn ? fn(7) : 7;
+export function seven(func) {
+  return func ? func(7) : 7;
 }
-function eight(fn) {
-  return fn ? fn(8) : 8;
+export function eight(func) {
+  return func ? func(8) : 8;
 }
-function nine(fn) {
-  return fn ? fn(9) : 9;
+export function nine(func) {
+  return func ? func(9) : 9;
 }
 
-function plus(b) {
-  return (a) => a + b;
+export function plus(value2) {
+  return (value1) => value1 + value2;
 }
-function minus(b) {
-  return (a) => a - b;
+export function minus(value2) {
+  return (value1) => value1 - value2;
 }
-function times(b) {
-  return (a) => a * b;
+export function times(value2) {
+  return (value1) => value1 * value2;
 }
-function dividedBy(b) {
-  return (a) => Math.floor(a / b);
+export function dividedBy(value2) {
+  return (value1) => Math.floor(value1 / value2);
 }
 
 // http://www.codewars.com/kata/get-the-middle-character
-function getMiddle(s) {
-  const mid = Math.floor(s.length / 2);
-  return s.length % 2 ? s[mid] : s.slice(mid - 1, mid + 1);
+export function getMiddle(str) {
+  const mid = Math.floor(str.length / 2);
+  return str.length % 2 ? str[mid] : str.slice(mid - 1, mid + 1);
 }
 
 // http://www.codewars.com/kata/partition-on
-function partitionOn(pred, items) {
+export function partitionOn(pred, items) {
   const falsy = items.filter((item) => !pred(item));
   const truthy = items.filter((item) => pred(item));
   items.length = 0;
@@ -87,27 +86,29 @@ function partitionOn(pred, items) {
 }
 
 // https://www.codewars.com/kata/find-the-odd-int/
-function findOdd(A) {
-  for (let i of A) {
-    if (A.filter((x) => x === i).length % 2 !== 0) {
+export function findOdd(arr) {
+  for (let i of arr) {
+    if (arr.filter((x) => x === i).length % 2 !== 0) {
       return i;
     }
   }
 }
 
 // https://www.codewars.com/kata/find-the-parity-outlier
-function findOutlier(integers) {
+export function findOutlier(integers) {
   let odds = integers.filter((x) => x % 2);
   return odds.length > 1 ? integers.filter((x) => x % 2 == 0)[0] : odds[0];
 }
 
 // https://www.codewars.com/kata/zipwith
-function zipWith(fn, a0, a1) {
-  return Array.from({ length: Math.min(a0.length, a1.length) }, (_, i) => fn(a0[i], a1[i]));
+export function zipWith(func, arr0, arr1) {
+  return Array.from({ length: Math.min(arr0.length, arr1.length) }, (_, i) =>
+    func(arr0[i], arr1[i])
+  );
 }
 
 // https://www.codewars.com/kata/filter-the-number
-function filterString(value) {
+export function filterString(value) {
   return +value
     .split('')
     .filter((a) => !isNaN(Number(a)))
@@ -115,12 +116,12 @@ function filterString(value) {
 }
 
 // https://www.codewars.com/kata/n-th-fibonacci
-function nthFibo(n) {
-  return n < 2 ? 0 : n == 2 ? 1 : nthFibo(n - 1) + nthFibo(n - 2);
+export function nthFibo(number) {
+  return number < 2 ? 0 : number == 2 ? 1 : nthFibo(number - 1) + nthFibo(number - 2);
 }
 
 // https://www.codewars.com/kata/cat-and-mouse-2d-version/
-function catMouse(map, moves) {
+export function catMouse(map, moves) {
   const lines = map.split('\n');
   let catPos, mousePos;
 
@@ -139,7 +140,7 @@ function catMouse(map, moves) {
 }
 
 // https://www.codewars.com/kata/duplicate-encoder
-function duplicateEncode(word) {
+export function duplicateEncode(word) {
   const chars = word.toLowerCase().split('');
   const count = {};
 
@@ -151,7 +152,7 @@ function duplicateEncode(word) {
 }
 
 // https://www.codewars.com/kata/576757b1df89ecf5bd00073b
-function towerBuilder(nFloors) {
+export function towerBuilder(nFloors) {
   let spaces,
     stars,
     res = [];
@@ -164,7 +165,7 @@ function towerBuilder(nFloors) {
 }
 
 // https://www.codewars.com/kata/58f5c63f1e26ecda7e000029
-function wave(str) {
+export function wave(str) {
   let mWave = [];
   for (let i = 0; i < str.length; i++) {
     if (str[i] === ' ') continue;
@@ -177,7 +178,7 @@ function wave(str) {
 }
 
 // https://www.codewars.com/kata/59d398bb86a6fdf100000031
-function stringBreakers(n, string) {
+export function stringBreakers(n, string) {
   const noSpaces = string.replace(/\s/g, '');
 
   const result = [];
@@ -189,7 +190,7 @@ function stringBreakers(n, string) {
 }
 
 // https://www.codewars.com/kata/514a024011ea4fb54200004b
-function domainName(url) {
+export function domainName(url) {
   url = url.replace(/(https?:\/\/)?(www\.)?/, '');
   const match = url.match(/^([^.]+)/);
   return match ? match[1] : '';
