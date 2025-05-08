@@ -3,48 +3,42 @@ let isShiftPressed = false;
 
 createGrid(30, 20);
 
-grid.addEventListener('click', (e) => {
-  if (e.target.classList.contains('cell')) {
-    let xy = readCell(e.target);
-    clearGrid();
-    colorGrid(xy[0], xy[1]);
-  }
-});
-
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Shift') isShiftPressed = true;
 });
+
 document.addEventListener('keyup', (e) => {
-  if (e.key === 'Shift') {
-    isShiftPressed = false;
-  }
+  if (e.key === 'Shift') isShiftPressed = false;
 });
-grid.addEventListener('mouseover', (e) => {
-  if (isShiftPressed && e.target.classList.contains('cell')) {
-    const xy = readCell(e.target);
+
+grid.addEventListener('click', (e) => {
+  if (e.target.classList.contains('cell')) {
+    let xy = readCell(e.target);
+    if (!isShiftPressed) {
+      clearGrid();
+    }
     colorGrid(xy[0], xy[1]);
   }
 });
 
 function createGrid(rows, cols) {
   grid.style.display = 'flex';
-  grid.style.listStyle = 'none';
-  grid.style.padding = '0';
   grid.style.flexWrap = 'wrap';
-  grid.style.justifyContent = 'center';
   grid.style.width = `${cols * 42 + (cols - 1) * 2 - 30}px`;
 
   for (let i = 1; i < rows + 1; i++) {
-    const row = document.createElement('li');
+    const row = document.createElement('div');
     row.style.display = 'flex';
     for (let j = 1; j < cols + 1; j++) {
-      const cell = document.createElement('li');
+      const cell = document.createElement('div');
       cell.content = `${i}/${j}`;
-      cell.style.width = '40px';
-      cell.style.height = '40px';
-      cell.style.color = '#fff';
-      cell.style.backgroundColor = '#fff';
-      cell.style.border = '1px solid #000';
+      Object.assign(cell.style, {
+        width: '40px',
+        height: '40px',
+        color: '#fff',
+        backgroundColor: '#fff',
+        border: '1px solid #000',
+      });
       cell.classList.add('cell');
       row.appendChild(cell);
     }
