@@ -1,11 +1,10 @@
 const rootList = document.getElementById('root');
 const apiUrl = 'https://randomuser.me/api';
-const testQuery = 'gender=female&results=10';
-const areTesting = 'xhr';
 
 /**
  * Fetches user data from the Random User API using the Fetch API.
  * @async
+ * @param {string} apiUrl - The base API URL.
  * @param {string} query - The query string to append to the API URL.
  * @returns {Promise<Array>} - A promise that resolves to an array of user objects.
  */
@@ -25,6 +24,7 @@ const getData = async (apiUrl, query) => {
 
 /**
  * Fetches user data from the Random User API using XMLHttpRequest.
+ * @param {string} apiUrl - The base API URL.
  * @param {string} query - The query string to append to the API URL.
  * @returns {Promise<Array>} - A promise that resolves to an array of user objects.
  */
@@ -60,16 +60,29 @@ const renderUserList = (rootList, userList) => {
   const list = userList.reduce((acc, user) => {
     const name = Object.values(user.name).join(' ');
     const listElement = `
-    <li key="${user.id.value}">
+    <li key="${user.id.value || Math.random()}">
         <img src="${user.picture.large}" alt="${name}"/>
         <p>${name}<br>
         from ${user.location.city}, ${user.location.country}</p>
     </li>`;
-    return (acc += listElement);
+    return acc + listElement;
   }, '');
   rootList.innerHTML = list;
 };
 
-areTesting === 'xhr'
-  ? getDataXHR(apiUrl, testQuery).then((list) => renderUserList(rootList, list))
-  : getData(apiUrl, testQuery).then((list) => renderUserList(rootList, list));
+// ======== INTERACTIVE SECTION ========
+
+const method = prompt('Which method to use? Enter "fetch" or "xhr":', 'fetch').toLowerCase();
+const gender = prompt('Enter gender filter ("male", "female", or leave blank):', 'female');
+const results = prompt('How many users do you want to fetch?', '10');
+
+const queryParts = [];
+if (gender) queryParts.push(`gender=${gender}`);
+if (results) queryParts.push(`results=${results}`);
+const finalQuery = queryParts.join('&');
+
+(method === 'xhr' ? getDataXHR(apiUrl, finalQuery) : getData(apiUrl, finalQuery))
+  .then((list) => renderUserList(rootList, list))
+  .catch((error) => {
+    rootList.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+  });
