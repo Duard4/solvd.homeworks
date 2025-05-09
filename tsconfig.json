@@ -1,0 +1,10 @@
+{
+  "include": ["homeworks/16-typescript-advanced"],
+  "compilerOptions": {
+    "outDir": "homeworks/16-typescript-advanced/build",
+    "rootDir": "homeworks/16-typescript-advanced",
+    "target": "ES6",
+    "module": "CommonJS",
+    "strict": true
+  }
+}
