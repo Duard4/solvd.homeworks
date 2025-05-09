@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: antiquewhite;
+  padding-inline: 2em;
+}
+.title {
+  font-size: 36px;
+  text-align: center;
+  color: brown;
+  margin: 80px auto 50px;
+  font-family: 'Lucida Grande', sans-serif;
+}
+.userList {
+  list-style: none;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  font-size: 16px;
+  gap: 2em;
+  max-width: 900px;
+  font-family: 'Lucida Sans', sans-serif;
+  margin: 0 auto 80px;
+  & li {
+    border-style: groove;
+    border: 8px groove #c3bf28;
+    padding: 0.5em 1em;
+    border-radius: 8px;
+  }
+  & li p {
+    margin-top: 6px;
+  }
+}
