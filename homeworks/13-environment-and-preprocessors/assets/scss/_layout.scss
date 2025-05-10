@@ -1,0 +1,108 @@
+@use 'variables';
+@use 'mixins';
+
+/* Header */
+.header {
+  @include mixins.flex-center;
+
+  &__theme-switcher {
+    padding: 20px;
+    border-radius: 50%;
+    margin-top: 54px;
+    line-height: 0;
+    background-color: var(--bg-content-color);
+  }
+}
+
+/* Main */
+.main {
+  display: flex;
+  flex-direction: column;
+  @include mixins.flex-center;
+}
+
+/* About me */
+.about-me {
+  &__person {
+    display: flex;
+    gap: 40px;
+    margin-top: 65px;
+    align-items: center;
+  }
+
+  &__name {
+    color: var(--title-color);
+    font-size: 46px;
+    margin-bottom: 3px;
+  }
+
+  &__links {
+    &-list {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    &-item {
+      display: flex;
+      width: 36px;
+      height: 36px;
+
+      svg {
+        height: 100%;
+        fill: var(--text-color);
+        @include mixins.transition(fill);
+      }
+
+      &:hover svg {
+        fill: var(--title-color);
+      }
+    }
+  }
+
+  &__features {
+    max-width: 634px;
+    padding-block: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    margin-block: 48px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 38px;
+    margin-top: 40px;
+  }
+}
+
+/* Portfolio */
+.portfolio {
+  margin-top: 75px;
+
+  &__content-switcher {
+    @include mixins.flex-between;
+    padding: 15px 24px;
+    border-radius: 20px;
+    max-width: 760px;
+    background-color: var(--bg-content-color);
+  }
+
+  &__projects {
+    margin: 65px auto 130px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 48px;
+    column-gap: 32px;
+  }
+}
+
+/* Footer */
+.footer {
+  &__text {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "13-environment-and-preprocessors",
+  "version": "1.0.0",
+  "main": "switcher.js",
+  "scripts": {
+    "build": "sass assets/scss/style.scss:style.css --style=compressed",
+    "start": "sass --watch assets/scss/style.scss:style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "node-sass": "^9.0.0",
+    "nodemon": "^3.1.10",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.87.0"
+  }
+}
