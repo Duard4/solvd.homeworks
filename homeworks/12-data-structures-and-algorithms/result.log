@@ -1,0 +1,34 @@
+
+  === Search Algorithm Performance Test Results ===
+  Test Date: 2025-05-11T00:10:54.416Z
+  Data Size: 1000 items
+  Needle List Size: 17 searches
+  
+  Results:
+  
+  Merge Sort:
+    Total Time: 3.593ms
+    Success Rate: undefined/undefined (NaN%)
+    Average Time per Search: NaNms
+  
+  Linear Search (unsorted):
+    Total Time: 246.671ms
+    Success Rate: 10017/10018 (100.0%)
+    Average Time per Search: 0.024623ms
+  
+  Linear Search (sorted):
+    Total Time: 703.598ms
+    Success Rate: 10017/10018 (100.0%)
+    Average Time per Search: 0.070233ms
+  
+  Binary Search:
+    Total Time: 3.392ms
+    Success Rate: 10017/10018 (100.0%)
+    Average Time per Search: 0.000339ms
+  
+  Exponential Search:
+    Total Time: 3.591ms
+    Success Rate: 10017/10018 (100.0%)
+    Average Time per Search: 0.000358ms
+  
+  
