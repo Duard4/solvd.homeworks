@@ -1,0 +1,35 @@
+@use 'variables';
+@use 'reset';
+@use 'components';
+@use 'layout';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+// Use CSS variables for theme switching
+:root {
+  --primary-color: #{variables.$primary-color};
+  --primary-content-color: #{variables.$primary-content-color};
+  --bg-color: #{variables.$bg-color};
+  --title-color: #{variables.$title-color};
+  --text-color: #{variables.$text-color};
+  --bg-content-color: #{variables.$bg-content-color};
+  --bg-content-color-hover: #{variables.$bg-content-color-hover};
+}
+
+body {
+  font: variables.$font-size-base variables.$font-family;
+  font-weight: variables.$font-weight-medium;
+  font-style: normal;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+
+  &.dark {
+    --primary-color: #{variables.$dark-primary-color};
+    --bg-color: #{variables.$dark-bg-color};
+    --title-color: #{variables.$dark-title-color};
+    --text-color: #{variables.$dark-text-color};
+    --primary-content-color: #{variables.$dark-primary-content-color};
+    --bg-content-color: #{variables.$dark-bg-content-color};
+    --bg-content-color-hover: #{variables.$dark-bg-content-color-hover};
+  }
+}
