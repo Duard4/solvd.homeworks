@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { TodoContext } from '../context/TodoContext';
-import { TodoItem } from './TodoItem';
+import React from 'react';
+import { useTodoContext } from '@/hooks/useTodoContext';
+import { TodoItem } from '@/components/TodoItem';
 
 /**
  * List of all to-do items.
@@ -9,15 +9,12 @@ import { TodoItem } from './TodoItem';
  * @returns JSX.Element
  */
 export const TodoList: React.FC = () => {
-  const context = useContext(TodoContext);
-  if (!context) throw new Error('TodoContext not found');
-
-  const { todos } = context;
+  const { todos } = useTodoContext();
 
   return (
     <ul className="todoList">
-      {todos.map(({ text, completed }, index) => (
-        <TodoItem key={index} index={index} text={text} completed={completed} />
+      {todos.map((todo) => (
+        <TodoItem key={todo.id} id={todo.id} text={todo.text} completed={todo.completed} />
       ))}
     </ul>
   );

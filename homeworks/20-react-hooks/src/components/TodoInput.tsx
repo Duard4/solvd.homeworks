@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { TodoContext } from '../context/TodoContext';
+import React from 'react';
+import { useTodoContext } from '@/hooks/useTodoContext';
 
 /**
  * Input component for creating a new to-do item.
@@ -8,10 +8,7 @@ import { TodoContext } from '../context/TodoContext';
  * @returns JSX.Element
  */
 export const TodoInput: React.FC = () => {
-  const context = useContext(TodoContext);
-  if (!context) throw new Error('TodoContext not found');
-
-  const { newTodo, setNewTodo, addTodo, error } = context;
+  const { newTodo, setNewTodo, addTodo, error } = useTodoContext();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

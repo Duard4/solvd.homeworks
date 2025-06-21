@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { TodoContext } from '../context/TodoContext';
+import React, { useState } from 'react';
+import { useTodoContext } from '@/hooks/useTodoContext';
 
 /**
  * Individual todo item component.
@@ -8,27 +8,24 @@ import { TodoContext } from '../context/TodoContext';
  * @returns JSX.Element
  */
 export const TodoItem: React.FC<{
-  index: number;
+  id: string;
   text: string;
   completed: boolean;
-}> = ({ index, text, completed }) => {
-  const context = useContext(TodoContext);
-  if (!context) throw new Error('TodoContext not found');
-
-  const { toggleTodo, deleteTodo, updateTodo } = context;
+}> = ({ id, text, completed }) => {
+  const { toggleTodo, deleteTodo, updateTodo } = useTodoContext();
 
   const [isEditing, setIsEditing] = useState(false);
   const [editingText, setEditingText] = useState(text);
 
   const handleSave = () => {
-    const success = updateTodo(index, editingText);
+    const success = updateTodo(id, editingText);
     if (success) setIsEditing(false);
   };
 
   return (
     <li className="todoItem">
       <label className="custom-checkbox">
-        <input type="checkbox" checked={completed} onChange={() => toggleTodo(index)} />
+        <input type="checkbox" checked={completed} onChange={() => toggleTodo(id)} />
         <span className="checkmark"></span>
       </label>
       {isEditing ? (
@@ -44,7 +41,7 @@ export const TodoItem: React.FC<{
           <button className="icon-btn" onClick={() => setIsEditing(true)}>
             ✏️
           </button>
-          <button className="icon-btn" onClick={() => deleteTodo(index)}>
+          <button className="icon-btn" onClick={() => deleteTodo(id)}>
             🗑️
           </button>
         </>
