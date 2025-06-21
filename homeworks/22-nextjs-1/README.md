@@ -136,4 +136,3 @@ Contributions are welcome! Please follow these steps:
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tinyfaces API](https://tinyfac.es)
-- [React Icons](https://react-icons.github.io/react-icons/)
