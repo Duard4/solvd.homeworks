@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Avatar } from '@/types/avatar';
 import { fetchSingleAvatar } from '@/lib/avatarApi';
+import Image from 'next/image';
 
 /**
  * Props for the AvatarGrid component
@@ -89,9 +90,11 @@ export default function AvatarGrid({ initialAvatars }: AvatarGridProps) {
       <ul className="avatar-grid">
         {avatars.map((avatar) => (
           <li key={avatar.id} className="tile">
-            <img
+            <Image
               src={avatar.url}
               alt="Avatar"
+              width={240}
+              height={240}
               style={{
                 cursor: 'pointer',
                 opacity: refreshingTiles.has(avatar.id) ? 0.5 : 1,

@@ -1,9 +1,19 @@
 import { Avatar } from '@/types/avatar';
+
+/**
+ * Represents an avatar entity before it was added to the app
+ * @typedef {Object} AvatarApi
+ * @property {string} url - URL pointing to the avatar image
+ */
+export interface ApiAvatar {
+  url: string;
+}
+
 /**
  * Base URL for the avatar API with default query parameters
  * @constant {string}
  */
-const AVATAR_API_URL = 'https://tinyfac.es/api/data?limit=50&quality=0';
+const AVATAR_API_URL: string = 'https://tinyfac.es/api/data?limit=50&quality=0';
 
 /**
  * Fetches an array of random avatars from the API
@@ -35,7 +45,7 @@ export async function fetchAvatars(count: number = 5): Promise<Avatar[]> {
     const shuffled = data.sort(() => 0.5 - Math.random());
     const selected = shuffled.slice(0, count);
 
-    return selected.map((avatar: any, index: number) => ({
+    return selected.map((avatar: ApiAvatar, index: number) => ({
       id: Date.now() + index,
       url: avatar.url,
     }));
