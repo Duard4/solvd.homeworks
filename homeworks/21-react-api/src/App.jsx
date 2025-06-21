@@ -1,6 +1,6 @@
-import { TodoProvider } from './context/TodoContext';
-import TodoInput from './components/TodoInput';
-import TodoList from './components/TodoList';
+import { TodoProvider } from '@/context/TodoContext';
+import TodoInput from '@/components/TodoInput';
+import TodoList from '@/components/TodoList';
 
 const ToDoApp = () => (
   <TodoProvider>

@@ -1,14 +1,37 @@
 import { useCallback, useMemo } from 'react';
-import { useTodos } from '../hooks/useTodos';
-import TodoItem from './TodoItem';
+import { useTodos } from '@/hooks/useTodos';
+import TodoItem from '@/components/TodoItem';
 
+/**
+ * TodoList component that displays all todo items
+ *
+ * Renders a list of TodoItem components and provides functionality
+ * to clear all completed todos. Shows clear button only when there
+ * are completed todos.
+ *
+ * @component
+ * @example
+ * return (
+ *   <TodoList />
+ * )
+ */
 const TodoList = () => {
   const { todos, dispatch } = useTodos();
 
+  /**
+   * Clears all completed todo items
+   *
+   * @function
+   */
   const clearCompleted = useCallback(() => {
     dispatch({ type: 'CLEAR_COMPLETED' });
   }, [dispatch]);
 
+  /**
+   * Memoized count of completed todos
+   *
+   * @type {number}
+   */
   const completedCount = useMemo(() => todos.filter((todo) => todo.completed).length, [todos]);
 
   return (

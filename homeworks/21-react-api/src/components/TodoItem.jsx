@@ -1,19 +1,58 @@
 import { useState, useCallback } from 'react';
-import { useTodos } from '../hooks/useTodos';
+import { useTodos } from '@/hooks/useTodos';
 
+/**
+ * TodoItem component representing a single todo item
+ *
+ * Displays a todo with checkbox, text, and action buttons (edit/delete).
+ * Supports inline editing with validation and completion toggling.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {number} props.index - Index of the todo item in the list
+ * @param {string} props.text - Text content of the todo
+ * @param {boolean} props.completed - Completion status of the todo
+ *
+ * @example
+ * return (
+ *   <TodoItem
+ *     index={0}
+ *     text="Buy groceries"
+ *     completed={false}
+ *   />
+ * )
+ */
 const TodoItem = ({ index, text, completed }) => {
   const { dispatch, validateTodo, setError } = useTodos();
   const [isEditing, setIsEditing] = useState(false);
   const [editingText, setEditingText] = useState(text);
 
+  /**
+   * Toggles the completion status of the todo
+   *
+   * @function
+   */
   const toggleTodo = useCallback(() => {
     dispatch({ type: 'TOGGLE_TODO', payload: index });
   }, [dispatch, index]);
 
+  /**
+   * Deletes the todo item
+   *
+   * @function
+   */
   const deleteTodo = useCallback(() => {
     dispatch({ type: 'DELETE_TODO', payload: index });
   }, [dispatch, index]);
 
+  /**
+   * Saves the edited todo text after validation
+   *
+   * Validates the new text, updates the todo if valid,
+   * exits edit mode, and clears any errors.
+   *
+   * @function
+   */
   const handleSave = () => {
     const validationError = validateTodo(editingText, index);
     if (validationError) {
