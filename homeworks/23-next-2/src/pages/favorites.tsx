@@ -226,7 +226,8 @@ export default function FavoritesPage({ allCountries }: FavoritesPageProps): JSX
             {/* Footer Stats */}
             <div className="text-center py-8">
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                You've favorited {favoriteCountries.length} out of {allCountries.length} countries
+                You&apos;ve favorited {favoriteCountries.length} out of {allCountries.length}{' '}
+                countries
                 {favoriteCountries.length > 0 && (
                   <span className="ml-2">
                     ({((favoriteCountries.length / allCountries.length) * 100).toFixed(1)}% of the

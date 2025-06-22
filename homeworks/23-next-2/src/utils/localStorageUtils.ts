@@ -21,6 +21,7 @@ function isLocalStorageAvailable(): boolean {
     localStorage.removeItem(test);
     return true;
   } catch (error) {
+    console.error('Localstorage is not available:', error);
     return false;
   }
 }

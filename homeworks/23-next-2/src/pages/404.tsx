@@ -5,7 +5,6 @@
 import { JSX } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { FaGlobe } from 'react-icons/fa';
 import PageHeading from '@/components/PageHeading';
 import CountryShortNav from '@/components/CountryShortNav';
@@ -15,16 +14,6 @@ import CountryShortNav from '@/components/CountryShortNav';
  * @returns JSX.Element The 404 page component
  */
 export default function Custom404(): JSX.Element {
-  const router = useRouter();
-
-  const handleGoBack = () => {
-    if (window.history.length > 1) {
-      router.back();
-    } else {
-      router.push('/');
-    }
-  };
-
   return (
     <>
       <Head>
@@ -49,7 +38,7 @@ export default function Custom404(): JSX.Element {
           {/* Error Message */}
           <div className="mb-8">
             <p className="text-gray-500 dark:text-gray-500">
-              It might have been misspelled, moved to a different dimension, or simply doesn't
+              It might have been misspelled, moved to a different dimension, or simply doesn&apos;t
               exist.
             </p>
           </div>
@@ -61,8 +50,8 @@ export default function Custom404(): JSX.Element {
               Looking for something specific?
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Try browsing by region or use our search feature to find the country you're looking
-              for.
+              Try browsing by region or use our search feature to find the country you&apos;re
+              looking for.
             </p>
             <div className="flex flex-wrap gap-2 justify-center">
               {['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'].map((region) => (

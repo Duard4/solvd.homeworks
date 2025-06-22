@@ -8,6 +8,7 @@ import { Card } from 'flowbite-react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { Country } from '@/types/country';
 import { formatPopulation } from '@/utils/api';
+import Image from 'next/image';
 
 /**
  * Props for the CountryCard component
@@ -64,7 +65,9 @@ export default function CountryCard({
 
           {/* Country Flag */}
           <div className="relative h-48 w-full overflow-hidden rounded-lg">
-            <img
+            <Image
+              width={200}
+              height={200}
               src={country.flags.png}
               alt={country.flags.alt || `Flag of ${country.name.common}`}
               className="h-full w-full object-cover transition-transform duration-200 hover:scale-105"

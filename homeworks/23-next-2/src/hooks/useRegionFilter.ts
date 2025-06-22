@@ -108,7 +108,7 @@ export function useRegionFilter(allCountries: Country[]): UseRegionFilterReturn 
     } else {
       setDisplayCountries(allCountries);
     }
-  }, [allCountries]);
+  }, [allCountries, fetchCountriesByRegion]);
 
   return {
     displayCountries,

@@ -15,6 +15,7 @@ import {
   formatLanguages,
   getBorderCountryNames,
 } from '@/utils/api';
+import Image from 'next/image';
 
 /**
  * Props for the CountryDetails component
@@ -84,7 +85,9 @@ export default function CountryDetails({
         {/* Flag & Basic Info */}
         <Card className="h-fit">
           <div className="relative">
-            <img
+            <Image
+              width={200}
+              height={200}
               src={country.flags.svg || country.flags.png}
               alt={country.flags.alt || `Flag of ${country.name.common}`}
               className="w-full h-64 object-cover rounded-lg shadow-md"
