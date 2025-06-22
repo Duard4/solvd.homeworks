@@ -3,7 +3,7 @@
  * Handles API calls, URL parameters, and state management for region filtering
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Country, Region } from '@/types/country';
 
 /**
@@ -32,41 +32,42 @@ export function useRegionFilter(allCountries: Country[]): UseRegionFilterReturn 
   /**
    * Fetch countries by region from API or fallback to all
    */
-  const fetchCountriesByRegion = async (region: Region | 'all') => {
-    setIsLoading(true);
-    setError(null);
+  const fetchCountriesByRegion = useCallback(
+    async (region: Region | 'all') => {
+      setIsLoading(true);
+      setError(null);
 
-    try {
-      if (region === 'all') {
+      try {
+        if (region === 'all') {
+          setDisplayCountries(allCountries);
+          return;
+        }
+
+        const response = await fetch(
+          `/api/region?region=${encodeURIComponent(region.toLowerCase())}`
+        );
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.error || 'Failed to fetch countries by region');
+        }
+
+        setDisplayCountries(data.data || []);
+      } catch (err) {
+        const errorMessage = err instanceof Error ? err.message : 'Unexpected error';
+        setError(errorMessage);
         setDisplayCountries(allCountries);
-        return;
+        setSelectedRegion('all');
+
+        const url = new URL(window.location.href);
+        url.searchParams.delete('region');
+        window.history.replaceState({}, '', url.toString());
+      } finally {
+        setIsLoading(false);
       }
-
-      const response = await fetch(
-        `/api/region?region=${encodeURIComponent(region.toLowerCase())}`
-      );
-      const data = await response.json();
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.error || 'Failed to fetch countries by region');
-      }
-
-      setDisplayCountries(data.data || []);
-    } catch (err) {
-      console.error('Error fetching countries by region:', err);
-      const errorMessage = err instanceof Error ? err.message : 'Unexpected error';
-      setError(errorMessage);
-      setDisplayCountries(allCountries);
-      setSelectedRegion('all');
-
-      // Remove invalid param from URL
-      const url = new URL(window.location.href);
-      url.searchParams.delete('region');
-      window.history.replaceState({}, '', url.toString());
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    },
+    [allCountries]
+  );
 
   /**
    * Handle region selection change
