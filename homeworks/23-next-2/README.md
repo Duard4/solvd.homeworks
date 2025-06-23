@@ -1,13 +1,9 @@
-Here’s a clean, professional `README.md` for your **Country Explorer** app:
-
----
-
-````markdown
 # 🌍 Country Explorer
 
 A **Next.js** app for exploring countries around the world using the [REST Countries API](https://restcountries.com/). Search, filter, and favorite countries — with dynamic routing, dark mode, and server-side features.
 
-> Built with the Next.js **Pages Router**, **Tailwind CSS**, and **Flowbite UI**.
+- Built with the Next.js **Pages Router**, **Tailwind CSS**, and **Flowbite UI**.
+- Deployed: https://solvd-homeworks-4uyc-rem8dz6xh-duard4s-projects.vercel.app/
 
 ---
 
@@ -87,7 +83,6 @@ A **Next.js** app for exploring countries around the world using the [REST Count
 git clone https://github.com/your-username/country-explorer.git
 cd country-explorer
 ```
-````
 
 ### 2. Install dependencies
 
