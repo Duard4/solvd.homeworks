@@ -7,7 +7,7 @@
 A Next.js application demonstrating different rendering strategies (SSG, SSR) with an interactive avatar grid. Users can add, refresh, and manage avatar tiles while learning about Next.js rendering methods.
 
 ## Link to deployment: 
-+ https://solvd-homeworks-pop82pwhc-duard4s-projects.vercel.app/
++ [https://solvd-homeworks-pop82pwhc-duard4s-projects.vercel.app/](https://solvd-homeworks-22-git-epar-22-nextjs-1-duard4s-projects.vercel.app)
 
 ## Features
 
