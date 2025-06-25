@@ -42,9 +42,7 @@ export async function getAllCountries(): Promise<Country[]> {
  */
 export async function getCountryByName(name: string): Promise<Country | null> {
   try {
-    const response = await fetch(
-      `${BASE_URL}/name/${encodeURIComponent(name)}?fullText=true&fields=${FIELDS}`
-    );
+    const response = await fetch(`${BASE_URL}/name/${name}?fullText=true&fields=${FIELDS}`);
 
     if (!response.ok) {
       if (response.status === 404) {
