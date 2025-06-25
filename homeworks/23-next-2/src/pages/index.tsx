@@ -5,17 +5,20 @@
 
 import { useState, useMemo, JSX } from 'react';
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import CountryCard from '@/components/CountryCard';
-import SearchBar from '@/components/SearchBar';
-import RegionFilter from '@/components/RegionFilter';
 import { useFavorites } from '@/hooks/useFavorites';
 import { useRegionFilter } from '@/hooks/useRegionFilter';
 import { getAllCountries } from '@/utils/api';
 import { Country } from '@/types/country';
-import CountryGrid from '@/components/CountryGrid';
-import PageHeading from '@/components/PageHeading';
-import { FaDizzy } from 'react-icons/fa';
+import Head from 'next/head';
+import CountryCard from '@/components/country/CountryCard';
+import SearchBar from '@/components/controls/SearchBar';
+import RegionFilter from '@/components/controls/RegionFilter';
+import CountryGrid from '@/components/country/CountryGrid';
+import PageHeading from '@/components/layout/PageHeading';
+import ResultsSummary from '@/components/home/ResultsSummary';
+import ErrorMessage from '@/components/home/ErrorMessage';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import EmptyState from '@/components/home/EmptyState';
 
 /**
  * Props for the Home page component
@@ -91,49 +94,21 @@ export default function Home({ countries }: HomeProps): JSX.Element {
         </div>
 
         {/* Error Message */}
-        {error && (
-          <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md p-4">
-            <div className="flex items-center justify-between">
-              <p className="text-red-800 dark:text-red-200 text-sm">⚠️ {error}</p>
-              <button
-                onClick={clearError}
-                className="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200 text-sm underline"
-              >
-                Dismiss
-              </button>
-            </div>
-          </div>
-        )}
+        {error && <ErrorMessage message={error} onDismiss={clearError} />}
 
         {/* Results Summary */}
-        <div className="flex items-center justify-between">
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            {isLoading ? (
-              'Loading countries...'
-            ) : (
-              <>
-                Showing {filteredCountries.length} of {displayCountries.length} countries
-                {selectedRegion !== 'all' && ` in ${selectedRegion}`}
-                {searchTerm && ` matching "${searchTerm}"`}
-                {selectedRegion !== 'all' && ' (via API)'}
-              </>
-            )}
-          </p>
-          {favorites.length > 0 && (
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              {favorites.length} favorite{favorites.length !== 1 ? 's' : ''}
-            </p>
-          )}
-        </div>
+        <ResultsSummary
+          isLoading={isLoading}
+          filteredCount={filteredCountries.length}
+          totalCount={displayCountries.length}
+          selectedRegion={selectedRegion}
+          searchTerm={searchTerm}
+          favoritesCount={favorites.length}
+        />
 
         {/* Countries Grid */}
         {isLoading ? (
-          <div className="text-center py-8">
-            <div className="text-gray-400 dark:text-gray-500 mb-4">
-              <div className="animate-spin h-8 w-8 mx-auto border-4 border-blue-500 border-t-transparent rounded-full"></div>
-            </div>
-            <p className="text-gray-600 dark:text-gray-400">Loading countries...</p>
-          </div>
+          <LoadingSpinner message="Loading countries..." />
         ) : filteredCountries.length > 0 ? (
           <CountryGrid>
             {filteredCountries.map((country) => (
@@ -146,23 +121,7 @@ export default function Home({ countries }: HomeProps): JSX.Element {
             ))}
           </CountryGrid>
         ) : (
-          <div className="text-center py-8">
-            <div className="text-gray-400 dark:text-gray-500 mb-4">
-              <FaDizzy className="h-14 w-14 mx-auto" />
-            </div>
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-              No countries found
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Try adjusting your search term or region filter.
-            </p>
-            <button
-              onClick={clearFilters}
-              className="cursor-pointer inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-600 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-800 transition-colors"
-            >
-              Clear filters
-            </button>
-          </div>
+          <EmptyState onClearFilters={clearFilters} />
         )}
       </div>
     </>

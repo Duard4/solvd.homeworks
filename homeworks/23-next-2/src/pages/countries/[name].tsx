@@ -2,25 +2,15 @@
  * @fileoverview Dynamic route page for individual country details
  */
 
+import { JSX } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
-import CountryDetails from '@/components/CountryDetails';
 import { useFavorites } from '@/hooks/useFavorites';
 import { getAllCountries, getCountryByName } from '@/utils/api';
-import { Country } from '@/types/country';
-import { JSX } from 'react';
-import CountryShortNav from '@/components/CountryShortNav';
-
-/**
- * Props for the CountryPage component
- */
-interface CountryPageProps {
-  /** Country data to display */
-  country: Country | null;
-  /** Array of all countries for border resolution */
-  allCountries: Country[];
-}
+import { CountryPageProps } from '@/types/props';
+import Head from 'next/head';
+import CountryShortNav from '@/components/controls/ShortNav';
+import CountryDetails from '@/components/country/CountryDetails';
 
 /**
  * Country detail page component

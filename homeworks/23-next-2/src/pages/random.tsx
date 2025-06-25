@@ -2,25 +2,15 @@
  * @fileoverview Random country page with server-side rendering
  */
 
-import { GetServerSideProps } from 'next';
-import Head from 'next/head';
 import { JSX } from 'react';
-import CountryDetails from '@/components/CountryDetails';
+import { GetServerSideProps } from 'next';
 import { useFavorites } from '@/hooks/useFavorites';
 import { getAllCountries, getRandomCountry } from '@/utils/api';
-import { Country } from '@/types/country';
-import PageHeading from '@/components/PageHeading';
-import CountryShortNav from '@/components/CountryShortNav';
-
-/**
- * Props for the RandomCountryPage component
- */
-interface RandomCountryPageProps {
-  /** Randomly selected country data */
-  country: Country;
-  /** Array of all countries for border resolution */
-  allCountries: Country[];
-}
+import { CountryPageProps } from '@/types/props';
+import Head from 'next/head';
+import CountryDetails from '@/components/country/CountryDetails';
+import PageHeading from '@/components/layout/PageHeading';
+import CountryShortNav from '@/components/controls/ShortNav';
 
 /**
  * Random country page component
@@ -30,7 +20,7 @@ interface RandomCountryPageProps {
 export default function RandomCountryPage({
   country,
   allCountries,
-}: RandomCountryPageProps): JSX.Element {
+}: CountryPageProps): JSX.Element {
   const { toggleFavorite, checkIsFavorite } = useFavorites();
 
   return (
@@ -76,7 +66,7 @@ export default function RandomCountryPage({
  * Server-side rendering: fetch random country data on each request
  * @returns GetServerSidePropsResult with random country data
  */
-export const getServerSideProps: GetServerSideProps<RandomCountryPageProps> = async () => {
+export const getServerSideProps: GetServerSideProps<CountryPageProps> = async () => {
   try {
     // Fetch all countries
     const allCountries = await getAllCountries();
@@ -85,7 +75,6 @@ export const getServerSideProps: GetServerSideProps<RandomCountryPageProps> = as
       throw new Error('No countries available');
     }
 
-    // Select a random country
     const randomCountry = getRandomCountry(allCountries);
 
     return {
@@ -97,7 +86,6 @@ export const getServerSideProps: GetServerSideProps<RandomCountryPageProps> = as
   } catch (error) {
     console.error('Error fetching random country:', error);
 
-    // Return to 404 page on error
     return {
       notFound: true,
     };

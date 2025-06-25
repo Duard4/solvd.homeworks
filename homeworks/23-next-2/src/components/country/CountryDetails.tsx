@@ -4,35 +4,19 @@
  * Includes support for marking a country as a favorite.
  */
 
-import React, { JSX } from 'react';
+import { JSX } from 'react';
 import Link from 'next/link';
 import { Card, Badge } from 'flowbite-react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { Country } from '@/types/country';
 import {
   formatPopulation,
   formatCurrencies,
   formatLanguages,
   getBorderCountryNames,
 } from '@/utils/api';
+import { CountryDetailsProps } from '@/types/props';
 import Image from 'next/image';
-
-/**
- * Props for the CountryDetails component
- *
- * @property country - The country to display details for
- * @property isFavorite - Whether the country is currently marked as a favorite
- * @property onToggleFavorite - Callback to toggle the favorite status of a country by name
- * @property allCountries - Optional list of all countries to resolve border names
- * @property className - Optional custom CSS classes for the wrapper
- */
-interface CountryDetailsProps {
-  country: Country;
-  isFavorite: boolean;
-  onToggleFavorite: (countryName: string) => void;
-  allCountries?: Country[];
-  className?: string;
-}
+import InfoRow from './InfoRow';
 
 /**
  * Component for displaying country details with flag, statistics,
@@ -57,27 +41,6 @@ export default function CountryDetails({
    * Get readable border country names from alpha codes
    */
   const borderCountries = getBorderCountryNames(country.borders, allCountries);
-
-  /**
-   * InfoRow subcomponent for displaying label-value pairs
-   *
-   * @param label - The label to display
-   * @param value - The value to display (if null, row is hidden)
-   * @returns JSX.Element or null
-   */
-  const InfoRow = ({
-    label,
-    value,
-  }: {
-    label: string;
-    value: string | number | JSX.Element | null;
-  }) =>
-    value ? (
-      <div className="flex flex-col sm:flex-row sm:justify-between">
-        <span className="font-medium text-gray-600 dark:text-gray-400">{label}:</span>
-        <span className="text-gray-900 dark:text-white font-medium">{value}</span>
-      </div>
-    ) : null;
 
   return (
     <div className={className}>

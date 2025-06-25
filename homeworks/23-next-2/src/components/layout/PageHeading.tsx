@@ -1,9 +1,8 @@
+/**
+ * @fileoverview Page heading component for displaying a title and subtitle
+ */
+import { PageHeaderProps } from '@/types/props';
 import { JSX } from 'react';
-
-interface PageHeaderProps {
-  title: string;
-  semititle: string;
-}
 
 export default function PageHeading({ title, semititle }: PageHeaderProps): JSX.Element {
   return (

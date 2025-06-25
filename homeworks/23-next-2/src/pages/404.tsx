@@ -3,11 +3,11 @@
  */
 
 import { JSX } from 'react';
+import { FaGlobe } from 'react-icons/fa';
 import Head from 'next/head';
 import Link from 'next/link';
-import { FaGlobe } from 'react-icons/fa';
-import PageHeading from '@/components/PageHeading';
-import CountryShortNav from '@/components/CountryShortNav';
+import PageHeading from '@/components/layout/PageHeading';
+import CountryShortNav from '@/components/controls/ShortNav';
 
 /**
  * Custom 404 Not Found page component

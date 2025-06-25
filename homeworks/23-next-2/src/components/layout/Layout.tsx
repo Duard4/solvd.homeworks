@@ -2,19 +2,10 @@
  * @fileoverview Main layout component with header, navigation and dark mode toggle
  */
 
-import React, { JSX } from 'react';
+import { JSX } from 'react';
 import Navigation from './Navigation';
 import Footer from './Footer';
-
-/**
- * Props for the Layout component
- * @property children - child components to render
- * @property title - optional title for the page
- */
-interface LayoutProps {
-  /** Child components to render */
-  children: React.ReactNode;
-}
+import { LayoutProps } from '@/types/props';
 
 /**
  * Main layout component that wraps all pages

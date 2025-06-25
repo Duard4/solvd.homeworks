@@ -1,4 +1,8 @@
-import React, { useEffect, useState } from 'react';
+/**
+ * @fileoverview Dark mode toggle button component
+ * @returns JSX.Element The dark mode toggle button
+ */
+import { useEffect, useState } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 export default function DarkModeToggle() {

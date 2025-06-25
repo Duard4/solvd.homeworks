@@ -2,11 +2,11 @@
  * @fileoverview Next.js App component with global providers and theme setup
  */
 
+import { JSX } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import Layout from '@/components/Layout';
+import Layout from '@/components/layout/Layout';
 import '@/styles/globals.css';
-import { JSX } from 'react';
 
 /**
  * Main App component

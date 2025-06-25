@@ -9,7 +9,7 @@ import {
   removeFromFavorites,
   isFavorite,
   clearFavorites,
-} from '../utils/localStorageUtils';
+} from '@/utils/localStorageUtils';
 
 /**
  * Return type for the useFavorites hook
@@ -38,7 +38,7 @@ interface UseFavoritesReturn {
  */
 export function useFavorites(): UseFavoritesReturn {
   const [favorites, setFavorites] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   /**
    * Loads favorites from localStorage on component mount

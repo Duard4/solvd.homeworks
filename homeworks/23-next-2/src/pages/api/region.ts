@@ -1,5 +1,5 @@
 /**
- * @fileoverview API route for filtering countries by region
+ * @fileoverview API route for filtering countries by region using the Next.js Pages Router.
  * Endpoint: /api/region?region=<regionName>
  */
 
@@ -8,7 +8,7 @@ import { getCountriesByRegion } from '@/utils/api';
 import { Country, Region } from '@/types/country';
 
 /**
- * API response type for region endpoint
+ * Defines the standardized API response structure for the region endpoint.
  */
 interface RegionApiResponse {
   success: boolean;
@@ -19,12 +19,13 @@ interface RegionApiResponse {
 }
 
 /**
- * Valid regions that can be filtered (lowercase for comparison)
+ * A list of valid region names (in lowercase) for request validation.
  */
 const VALID_REGIONS: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
 
 /**
- * Map lowercase region names to proper case for API calls
+ * Maps lowercase region names from the request to their proper cased equivalents
+ * required by the `getCountriesByRegion` utility function.
  */
 const REGION_MAP: Record<string, Region> = {
   africa: 'Africa',
@@ -35,15 +36,17 @@ const REGION_MAP: Record<string, Region> = {
 };
 
 /**
- * API handler for filtering countries by region
- * @param req - Next.js API request object
- * @param res - Next.js API response object
+ * Main API handler for filtering countries by region.
+ * It first checks the HTTP method, then validates the 'region' query parameter,
+ * and finally fetches and returns the relevant country data.
+ *
+ * @param req The Next.js `NextApiRequest` object for the incoming request.
+ * @param res The Next.js `NextApiResponse` object for sending the response.
  */
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<RegionApiResponse>
 ) {
-  // Only allow GET requests
   if (req.method !== 'GET') {
     return res.status(405).json({
       success: false,
@@ -53,8 +56,6 @@ export default async function handler(
 
   try {
     const { region } = req.query;
-
-    // Validate region parameter
     if (!region || typeof region !== 'string') {
       return res.status(400).json({
         success: false,
@@ -62,10 +63,7 @@ export default async function handler(
       });
     }
 
-    // Normalize region to lowercase for comparison
     const normalizedRegion = region.toLowerCase();
-
-    // Check if region is valid
     if (!VALID_REGIONS.includes(normalizedRegion)) {
       return res.status(400).json({
         success: false,
@@ -73,13 +71,9 @@ export default async function handler(
       });
     }
 
-    // Get the properly cased region name for the API call
     const properRegion = REGION_MAP[normalizedRegion];
-
-    // Fetch countries by region using the existing utility function
     const filteredCountries = await getCountriesByRegion(properRegion);
 
-    // Return filtered results
     return res.status(200).json({
       success: true,
       data: filteredCountries,
@@ -87,7 +81,7 @@ export default async function handler(
       region: properRegion,
     });
   } catch (error) {
-    console.error('Error in /api/region:', error);
+    console.error('Error fetching countries by region in Pages Router API:', error);
 
     return res.status(500).json({
       success: false,

@@ -1,4 +1,3 @@
-// src/utils/api.ts
 /**
  * @fileoverview API utility functions for fetching country data from REST Countries API
  */

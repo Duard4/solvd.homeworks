@@ -1,24 +1,14 @@
+'use client';
 /**
  * @fileoverview Navigation component with header and mobile menu
  */
 
-import React, { JSX, useState } from 'react';
+import { JSX, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { FaGlobe, FaHeart, FaRandom, FaHome, FaBars, FaTimes } from 'react-icons/fa';
 import DarkModeToggle from './DarkModeToggle';
-
-/**
- * Navigation link interface
- * @property href - link address
- * @property icon - respective icon of page, which link lead to
- * @property label - name of page, which link lead to
- */
-interface NavLink {
-  href: string;
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-}
+import { NavLink } from '@/types/navlink';
+import { useRouter } from 'next/router';
 
 /**
  * Navigation links configuration
@@ -48,7 +38,6 @@ export default function Navigation(): JSX.Element {
     }
     return router.pathname.startsWith(path);
   };
-
   /**
    * Gets CSS classes for navigation links
    * @param path - The path to check

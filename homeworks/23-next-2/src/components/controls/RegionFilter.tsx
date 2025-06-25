@@ -1,23 +1,12 @@
 /**
  * @fileoverview Region filter component for filtering countries by continent
- * Simplified version that only handles UI - no API calls
  */
 
-import React, { JSX } from 'react';
+import { JSX } from 'react';
 import { Button } from 'flowbite-react';
 import { FaGlobe, FaSpinner } from 'react-icons/fa';
 import { Region } from '@/types/country';
-
-/**
- * Props for the RegionFilter component
- */
-interface RegionFilterProps {
-  selectedRegion: Region | 'all';
-  onRegionChange: (region: Region | 'all') => void;
-  className?: string;
-  /** Loading state passed from parent */
-  isLoading?: boolean;
-}
+import { RegionFilterProps } from '@/types/props';
 
 /**
  * Available regions for filtering

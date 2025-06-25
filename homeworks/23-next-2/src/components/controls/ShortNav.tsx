@@ -1,8 +1,13 @@
-import { Button } from 'flowbite-react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+'use client';
+/**
+ * @fileoverview Short navigation component for country detail and random country navigation
+ * @returns JSX.Element The short navigation component
+ */
 import { JSX } from 'react';
+import { useRouter } from 'next/router';
+import { Button } from 'flowbite-react';
 import { FaArrowLeft } from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function CountryShortNav(): JSX.Element {
   const router = useRouter();

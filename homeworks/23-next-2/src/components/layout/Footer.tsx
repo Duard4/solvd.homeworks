@@ -2,7 +2,7 @@
  * @fileoverview Footer component with links and attribution
  */
 
-import React, { JSX } from 'react';
+import { JSX } from 'react';
 
 /**
  * Footer component with attribution and links

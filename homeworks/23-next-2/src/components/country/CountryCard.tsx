@@ -2,28 +2,13 @@
  * @fileoverview Country card component for displaying country information in a grid
  */
 
-import React, { JSX } from 'react';
+import { MouseEvent, JSX } from 'react';
 import Link from 'next/link';
 import { Card } from 'flowbite-react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { Country } from '@/types/country';
+import { CountryCardProps } from '@/types/props';
 import { formatPopulation } from '@/utils/api';
 import Image from 'next/image';
-
-/**
- * Props for the CountryCard component
- * @property country - country data to display
- * @property isFavorite - whether this country is favorited
- * @property onToggleFavorite - callback function to toggle favorite status
- * @property className - optional CSS class names
- */
-interface CountryCardProps {
-  country: Country;
-  isFavorite: boolean;
-  onToggleFavorite: (countryName: string) => void;
-  /** Optional CSS class names */
-  className?: string;
-}
 
 /**
  * Country card component displaying basic country information
@@ -40,7 +25,7 @@ export default function CountryCard({
    * Handles favorite button click
    * @param event - The click event
    */
-  const handleFavoriteClick = (event: React.MouseEvent) => {
+  const handleFavoriteClick = (event: MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
     onToggleFavorite(country.name.common);
