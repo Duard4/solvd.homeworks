@@ -1,4 +1,3 @@
-// File: app/ssg/page.tsx
 import AvatarGrid from '@/components/AvatarGrid';
 import { fetchAvatars } from '@/lib/avatarApi';
 import { Avatar } from '@/types/avatar';
@@ -12,19 +11,6 @@ import { JSX } from 'react';
  * Pre-renders the page at build time with avatar data.
  * @exports SSGPage
  */
-
-/**
- * Generates static parameters for the page at build time
- * @async
- * @function generateStaticParams
- * @returns {Promise<Array<Object>>} Array of route parameters
- * @example
- * // Used by Next.js to determine static paths
- * generateStaticParams()
- */
-export async function generateStaticParams() {
-  return [{}];
-}
 
 /**
  * Configures the page to opt out of dynamic behavior (SSG)
