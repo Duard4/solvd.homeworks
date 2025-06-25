@@ -3,7 +3,7 @@
 A modern web app for exploring countries worldwide using the REST Countries API. Built with **Next.js App Router**, featuring client-side filtering, dynamic routing, localStorage-based favorites, and dark mode support. Fully responsive with a custom UI powered by Tailwind CSS and Flowbite.
 
 **Deployed:**
-[https://solvd-homeworks-4uyc-rem8dz6xh-duard4s-projects.vercel.app](https://solvd-homeworks-4uyc-rem8dz6xh-duard4s-projects.vercel.app)
+https://solvd-homeworks-24-git-epar-24-next-3-duard4s-projects.vercel.app
 
 ---
 
