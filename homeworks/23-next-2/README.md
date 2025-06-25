@@ -3,7 +3,7 @@
 A **Next.js** app for exploring countries around the world using the [REST Countries API](https://restcountries.com/). Search, filter, and favorite countries — with dynamic routing, dark mode, and server-side features.
 
 - Built with the Next.js **Pages Router**, **Tailwind CSS**, and **Flowbite UI**.
-- Deployed: https://solvd-homeworks-4uyc-rem8dz6xh-duard4s-projects.vercel.app/
+- Deployed: https://solvd-homeworks-23-git-epar-23-next-2-duard4s-projects.vercel.app
 
 ---
 
