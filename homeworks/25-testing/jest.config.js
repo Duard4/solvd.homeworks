@@ -17,7 +17,7 @@ export default {
     '<rootDir>/src/**/*.(test|spec).(ts|tsx|js)',
   ],
   collectCoverageFrom: ['src/*.(ts|tsx)', '!src/*.d.ts', '!src/main.tsx', '!src/vite-env.d.ts'],
-  moduleNameMapping: {
+  moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
 };

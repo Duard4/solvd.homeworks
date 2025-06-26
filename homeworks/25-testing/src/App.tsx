@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 
 const AVATAR_API_URL = 'https://tinyfac.es/api/data?lmit=50&quality=0';
@@ -15,6 +15,15 @@ interface Avatar {
 const AvatarApp = () => {
   const [avatars, setAvatars] = useState<Avatar[]>([]);
   const [isRefreshingAll, setIsRefreshingAll] = useState(false);
+  const id = useRef(0);
+
+  /**
+   * function for id generation
+   */
+  const generateId = () => {
+    id.current++;
+    return  Number(`${Date.now()}${id.current}`);
+  }
 
   /**
    * Fetches a random avatar URL from the API.
@@ -46,7 +55,7 @@ const AvatarApp = () => {
   const handleAddTile = async () => {
     try {
       const avatarUrl = await fetchAvatar();
-      setAvatars((prev) => [...prev, { id: Date.now(), url: avatarUrl }]);
+      setAvatars((prev) => [...prev, { id: generateId(), url: avatarUrl }]);
     } catch {
       throw new Error('Failed to add avatar tile');
     }
@@ -90,7 +99,7 @@ const AvatarApp = () => {
     <div className="container">
       <ul className="avatar-grid">
         {avatars.map((avatar) => (
-          <li key={avatar.id} className="tile">
+          <li key={avatar.id} data-testid={avatar.id} className="tile">
             <img
               src={avatar.url}
               alt="Avatar"
